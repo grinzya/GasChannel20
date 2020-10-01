@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GasChannelWebApp", "GasChannelWebApp\GasChannelWebApp.csproj", "{C7F63269-A34F-4187-ACE2-BDAABB255651}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7F63269-A34F-4187-ACE2-BDAABB255651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7F63269-A34F-4187-ACE2-BDAABB255651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7F63269-A34F-4187-ACE2-BDAABB255651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7F63269-A34F-4187-ACE2-BDAABB255651}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADD572A1-6E7C-41FE-8F64-922EAB260F7C}
+	EndGlobalSection
+EndGlobal
