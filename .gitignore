@@ -1,9 +1,6 @@
 
 ~$Расчёты.xlsx
-GasChannelWebApp/.vs/
-GasChannelWebApp/bin/
-GasChannelWebApp/obj/
-GasChannelLib/bin/
-GasChannelLib/obj/
-GasChannelLib/.vs/
-GasChannelWebApp/.vs/GasChannelWebApp/v16/.suo
+**/.vs
+**/bin
+**/obj
+
