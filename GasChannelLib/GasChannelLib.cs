@@ -9,7 +9,30 @@ namespace GasChannelLib
     public class GasChannelLib
     {
         #region Входные данные
+        /// <summary>
+        /// Количество продуктов горения, м³/ч
+        /// </summary>
+        public double Kol_prod_gorenija = 19165;
 
+        /// <summary>
+        /// Плотность дымовых газов, кг/м³
+        /// </summary>
+        public double Ro_0 = 1.28;
+
+        /// <summary>
+        /// Плотность воздуха при Т=273°К, ρв, кг/м³
+        /// </summary>
+        public double Ro_v = 1.29;
+
+        /// <summary>
+        /// Высота рабочего пространства в конце печи, м
+        /// </summary>
+        public double H_pechi = 3.55;
+
+        /// <summary>
+        /// Ширина рабочего пространства в конце печи, м
+        /// </summary>
+        public double L_pechi = 2.15;
         #endregion
 
         #region Рассчёты
