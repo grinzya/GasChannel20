@@ -120,16 +120,128 @@ namespace GasChannelLib
         /// </summary>
         public double T_rek_vh = 1176;
 
+        /// <summary>
+        /// Скорость движения дыма в рекуператоре, м/с
+        /// </summary>
+        public double W0_rek = 4;
+
+        /// <summary>
+        /// Число рядов труб по глубине пучка
+        /// </summary>
+        public int n_trub = 14;
+
+        /// <summary>
+        /// Средняя температура стен труб
+        /// </summary>
+        public double T_trub = 593;
+
+        /// <summary>
+        /// Δh, по диаграмме
+        /// </summary>
+        public double d_h_diag = 8;
+
+        public double fi_s1 = 0.95;
+
+        public double fi_s2 = 1;
+
+        public double fi_d = 1.11;
+
+        public double fi_t_st = 1.06;
         #endregion
         #endregion
 
         #region Рассчёты
+        /// <summary>
+        /// Двойной диаметр труб, мм
+        /// </summary>
         public double s1 => 2 * d_trub_rek;
+
+        /// <summary>
+        /// Температура дыма на выходе в рекуператор, Тр1, К
+        /// </summary>
+        public double T_rek_vyh => T_rek_vh - T_rek;
+
+        /// <summary>
+        /// Средняя температура в рекуператоре, К
+        /// </summary>
+        public double T_rek_sr => (T_rek_vh + T_rek_vyh) / 2;
+
+        /// <summary>
+        /// Скорость движения дымовых газов в конце печи с учетом сечения рабочего пространства печи за счет нагревающихся заготовок толщиной 0,15 мм
+        /// </summary>
+        public double W0 => Kol_prod_gorenija / (3600 * H_pechi * (L_pechi - 0.15));
+        
+        /// <summary>
+        /// Скорость движения в 3 вертикальных каналах, м/с
+        /// </summary>
+        public double W_vert0 => 3 * W0;
+
+        /// <summary>
+        /// Сечение каналов, м2
+        /// </summary>
+        public double F_kan => Kol_prod_gorenija / (3600 * W_vert0);
+
+        /// <summary>
+        /// Сечение каждого канала, м2
+        /// </summary>
+        public double F_kazhd_kan => F_kan / 3;
+
+        /// <summary>
+        /// Приведённый диаметр вертикальных каналов, м
+        /// </summary>
+        public double d_vert_pr => (4 * L_vert * b_vert) / (2 * (L_vert + b_vert));
+
+        /// <summary>
+        /// Потеря энергии на трение в вертикальных каналах Н/м2
+        /// </summary>
+        public double h_vert_tr => (lambda_vert * H_vert * Ro_0 * Math.Pow(W_vert0, 2) * T_fume_v) / (d_vert_pr * 2 * T0);
+
+        /// <summary>
+        /// (проверить!)Потери энергии при повороте на 90 градусов (вертикальные каналы), Н/м2
+        /// </summary>
+        public double h_vert_pov90 => (2 * T_fume * Ro_0 * Math.Pow(W0, 2)) / (2 * T0);
+
+        /// <summary>
+        /// (проверить!) Потери энергии при сужении канала, вертикальные каналы, Н/м2
+        /// </summary>
+        public double h_vert_suzh => (0.43 * Ro_0 * Math.Pow(W0, 2));
+
+        /// <summary>
+        /// Потери на местных сопротивлениях (вертикаьные каналы), Н/м2
+        /// </summary>
+        public double h_vert_local => h_vert_pov90 + h_vert_suzh;
+
+        /// <summary>
+        /// Потери энергии на преодолении геометрического напора (верт), Н/м2
+        /// </summary>
+        public double h_vert_geom => 9.81 * H_vert * (Ro_v * (T0 / Tv_bor) - Ro_0 * (T0 / T_fume_v));
 
         /// <summary>
         /// Суммарные потери в вертикальном канале
         /// </summary>
-        public double H_pot_vert => 0;
+        public double H_pot_vert => h_vert_tr + h_vert_pov90 + h_vert_suzh + h_vert_geom;
+
+        /// <summary>
+        /// Сечение борова, м
+        /// </summary>
+        public double F_bor => Kol_prod_gorenija / (3600 * W_vert0);
+
+        /// <summary>
+        /// Приведенный диаметр борова
+        /// </summary>
+        public double d_pr_bor => (2 * H_bor) / (L_vert + H_bor);
+
+        /// <summary>
+        /// Средняя температура дыма на борове
+        /// </summary>
+        public double T_sr_fume_bor => (T_fume_v + Td_rek_fume_bor) / 2;
+
+        /// <summary>
+        /// Потеря энергии на трение от вертикальных каналов до рекуператора
+        /// </summary>
+        public double h_tr_bor => (lambda_vert * L_bor_vert_rek * Ro_0 * Math.Pow(W_vert0, 2) * T_sr_fume_bor) / (2 * d_pr_bor * T0);
+
+
 
         /// <summary>
         /// Суммарные потери энергии на учатске от вертикальных каналов до рекуператора
