@@ -13,12 +13,10 @@ namespace GasChannelWebCore.Controllers
     public class AccountController : Controller
     {
         private UserContext db;
-
         public AccountController(UserContext context)
         {
             db = context;
         }
-
         [HttpGet]
         public IActionResult Login()
         {
@@ -30,10 +28,10 @@ namespace GasChannelWebCore.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Username == model.Username && u.Password == model.Password);
+                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
-                    await Authenticate(model.Username); // аутентификация
+                    await Authenticate(model.Email); // аутентификация
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -56,7 +54,7 @@ namespace GasChannelWebCore.Controllers
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    db.Users.Add(new User { Email = model.Email, Password = model.Password });
+                    db.Users.Add(new User { Email = model.Email, Password = model.Password, Username = model.Username });
                     await db.SaveChangesAsync();
 
                     await Authenticate(model.Email); // аутентификация
@@ -68,6 +66,7 @@ namespace GasChannelWebCore.Controllers
             }
             return View(model);
         }
+
         private async Task Authenticate(string userName)
         {
             // создаем один claim
@@ -80,6 +79,7 @@ namespace GasChannelWebCore.Controllers
             // установка аутентификационных куки
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
+
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
