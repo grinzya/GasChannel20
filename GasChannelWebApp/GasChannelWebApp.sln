@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GasChannelWebApp", "GasChan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GasChannelLib", "..\GasChannelLib\GasChannelLib.csproj", "{9758F891-1B32-4914-BE67-856D7EA0AD70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GasChannelWebCore", "GasChannelWebCore\GasChannelWebCore.csproj", "{BB8FB446-F6D9-4946-8D6B-E213B66D2F58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9758F891-1B32-4914-BE67-856D7EA0AD70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9758F891-1B32-4914-BE67-856D7EA0AD70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9758F891-1B32-4914-BE67-856D7EA0AD70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB8FB446-F6D9-4946-8D6B-E213B66D2F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB8FB446-F6D9-4946-8D6B-E213B66D2F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB8FB446-F6D9-4946-8D6B-E213B66D2F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB8FB446-F6D9-4946-8D6B-E213B66D2F58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
