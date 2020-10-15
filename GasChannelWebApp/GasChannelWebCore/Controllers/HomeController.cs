@@ -20,7 +20,8 @@ namespace GasChannelWebCore.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            //return View();
+            return Content(User.Identity.Name);
         }
 
         public IActionResult Privacy()
