@@ -92,7 +92,7 @@ namespace GasChannelLib
         /// <summary>
         /// 0 градусов цельсия
         /// </summary>
-        public double T0 = 273;
+        public const double T0 = 273;
         #endregion
         #region Рекуператор
         /// <summary>

@@ -1,0 +1,166 @@
+﻿@model GasChannelWebApp.Domain.Variants
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_Variant, "Выберите вариант исходных данных", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.DropDownList("ID_Variant", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_Variant, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: auto; margin-top: 20px">
+            <button type="submit" style="font-size: 16px" class="btn btn-primary">Применить</button>
+        </div>
+    }
+
+    @using (Html.BeginForm("ResultDemo", "Home", FormMethod.Post))
+    {
+        <div class="container">
+            <h2>Исходные данные</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Наименование показателя, ед. изм.</th>
+                            <th>Величина</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Количество продуктов горения, м³/ч</td>
+                            <td>@Html.TextBox("InputData.Kol_prod_gorenija", (double)(ViewBag.InputData.Kol_prod_gorenija), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Плотность дымовых газов, кг/м³</td>
+                            <td>@Html.TextBox("InputData.Ro_0", (double)(ViewBag.InputData.Ro_0), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Плотность воздуха при Т=273°К, ρв, кг/м³</td>
+                            <td>@Html.TextBox("InputData.Ro_v", (double)(ViewBag.InputData.Ro_v), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Высота рабочего пространства в конце печи, м</td>
+                            <td>@Html.TextBox("InputData.H_pechi", (double)(ViewBag.InputData.H_pechi), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Ширина рабочего пространства в конце печи, м</td>
+                            <td>@Html.TextBox("InputData.L_pechi", (double)(ViewBag.InputData.L_pechi), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Температура дыма в конце печи, К</td>
+                            <td>@Html.TextBox("InputData.T_fume", (double)(ViewBag.InputData.T_fume), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Температура дыма в вертикальных каналах, К</td>
+                            <td>@Html.TextBox("InputData.T_fume_v", (double)(ViewBag.InputData.T_fume_v), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Длина вертикальных каналов, м</td>
+                            <td>@Html.TextBox("InputData.L_vert", (double)(ViewBag.InputData.L_vert), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Ширина, м</td>
+                            <td>@Html.TextBox("InputData.b_vert", (double)(ViewBag.InputData.b_vert), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Высота вертикальных каналов, м</td>
+                            <td>@Html.TextBox("InputData.H_vert", (double)(ViewBag.InputData.H_vert), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Коэффициент лямбда</td>
+                            <td>@Html.TextBox("InputData.lambda_vert", (double)(ViewBag.InputData.lambda_vert), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Длина борова от вертикальных каналов до рекуператора, м</td>
+                            <td>@Html.TextBox("InputData.L_bor_vert_rek", (double)(ViewBag.InputData.L_bor_vert_rek), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Температура дыма перед рекуператором, Tд рек</td>
+                            <td>@Html.TextBox("InputData.Td_rek_fume_bor", (double)(ViewBag.InputData.Td_rek_fume_bor), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Температура окружающего воздуха, Тв, К</td>
+                            <td>@Html.TextBox("InputData.Tv_bor", (double)(ViewBag.InputData.Tv_bor), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Высота борова, м</td>
+                            <td>@Html.TextBox("InputData.H_bor", (double)(ViewBag.InputData.H_bor), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Длина борова, м</td>
+                            <td>@Html.TextBox("InputData.L_bor", (double)(ViewBag.InputData.L_bor), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Падение температуры дыма в рекуператоре, к</td>
+                            <td>@Html.TextBox("InputData.T_rek", (double)(ViewBag.InputData.T_rek), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Длина камеры для установки рекуператора, м</td>
+                            <td>@Html.TextBox("InputData.L_rek", (double)(ViewBag.InputData.L_rek), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Ширина камеры для установки рекуператора, м</td>
+                            <td>@Html.TextBox("InputData.W_rek", (double)(ViewBag.InputData.W_rek), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Диаметр труб, мм</td>
+                            <td>@Html.TextBox("InputData.d_trub_rek", (double)(ViewBag.InputData.d_trub_rek), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Температура дыма на входе в рекуператор, Тр, К</td>
+                            <td>@Html.TextBox("InputData.T_rek_vh", (double)(ViewBag.InputData.T_rek_vh), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Скорость движения дыма в рекуператоре, м/с</td>
+                            <td>@Html.TextBox("InputData.W0_rek", (double)(ViewBag.InputData.W0_rek), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Число рядов труб по глубине пучка</td>
+                            <td>@Html.TextBox("InputData.n_trub", (int)(ViewBag.InputData.n_trub), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Средняя температура стен труб</td>
+                            <td>@Html.TextBox("InputData.T_trub", (double)(ViewBag.InputData.T_trub), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>Δh, м</td>
+                            <td>@Html.TextBox("InputData.d_h_diag", (double)(ViewBag.InputData.d_h_diag), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>φs1</td>
+                            <td>@Html.TextBox("InputData.fi_s1", (double)(ViewBag.InputData.fi_s1), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>φs2</td>
+                            <td>@Html.TextBox("InputData.fi_s2", (double)(ViewBag.InputData.fi_s2), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>φd</td>
+                            <td>@Html.TextBox("InputData.fi_d", (double)(ViewBag.InputData.fi_d), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+                        <tr>
+                            <td>φt ст</td>
+                            <td>@Html.TextBox("InputData.fi_d", (double)(ViewBag.InputData.fi_d), htmlAttributes: new { type = "text", style = " width:100px; " })</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: auto; margin-top: 20px">
+            <button type="submit" style="font-size: 16px" class="btn btn-primary">Рассчитать</button>
+        </div>
+    }
+</body>
+</html>
+

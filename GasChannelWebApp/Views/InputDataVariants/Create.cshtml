@@ -1,0 +1,36 @@
+﻿@model GasChannelWebApp.Domain.InputDataVariants
+
+@{
+    ViewBag.Title = "Создать";
+}
+
+<h2>Создать вариант</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Ввод исходных данных варианта</h4>
+        </hr>
+        @Html.ValidationSummary(true, "", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("ID_Variant", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ID_Variant, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Kol_prod_gorenija, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Kol_prod_gorenija, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Kol_prod_gorenija, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Ro_0, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Ro_0, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Ro_0, "", new { @class = "text-danger" })
+        </div>
+    </div>
+}
