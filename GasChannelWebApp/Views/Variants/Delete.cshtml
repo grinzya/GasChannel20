@@ -1,0 +1,48 @@
+﻿@model GasChannelWebApp.Domain.Variants
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы согласны удалить этот вариант?</h3>
+<div>
+    <h4>Варианты</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameVariant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameVariant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateVariant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateVariant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

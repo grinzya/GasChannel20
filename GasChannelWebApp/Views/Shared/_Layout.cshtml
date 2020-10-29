@@ -1,16 +1,16 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - приложение ASP.NET</title>
+    <title>Расчётная программа</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div>
-        <p>Программа по расчёту потерь при движении газа по газоходу</p>
+        <p>Программа расчёта</p>
     </div>
     <header>
         <div class="content-wrapper">
@@ -34,12 +34,9 @@
             @RenderBody()
         </section>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Григорий Федотов</p>
-        </footer>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Григорий Федотов</p>
+    </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

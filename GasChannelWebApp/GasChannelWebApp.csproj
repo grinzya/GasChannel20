@@ -27,6 +27,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>3.9</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -77,7 +78,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -92,11 +95,8 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -134,6 +134,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -163,6 +164,8 @@
     <Compile Include="Models\AccountModels\LoginModel.cs" />
     <Compile Include="Models\AccountModels\RegisterExternalLoginModel.cs" />
     <Compile Include="Models\AccountModels\RegisterModel.cs" />
+    <Compile Include="Models\DemoModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InputDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -327,10 +330,17 @@
     <Content Include="Views\Home\Excel.cshtml" />
     <Content Include="Views\Home\ResultDemo.cshtml" />
     <Content Include="Views\InputDataVariants\Create.cshtml" />
+    <Content Include="Views\InputDataVariants\Delete.cshtml" />
+    <Content Include="Views\InputDataVariants\Details.cshtml" />
+    <Content Include="Views\InputDataVariants\Edit.cshtml" />
+    <Content Include="Views\InputDataVariants\Index.cshtml" />
+    <Content Include="Views\Variants\Create.cshtml" />
+    <Content Include="Views\Variants\Delete.cshtml" />
+    <Content Include="Views\Variants\Details.cshtml" />
+    <Content Include="Views\Variants\Edit.cshtml" />
+    <Content Include="Views\Variants\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Variants\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
