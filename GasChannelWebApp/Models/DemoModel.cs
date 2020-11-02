@@ -172,6 +172,10 @@ namespace GasChannelWebApp.Models
         {
             get { return gcl.H_sum_pot; }
         }
+        public double h_sum
+        {
+            get { return gcl.h_sum; }
+        }
         #endregion --- Получить расчетные показатели
 
     }
