@@ -92,7 +92,7 @@ namespace GasChannelLib
         /// <summary>
         /// 0 градусов цельсия
         /// </summary>
-        public double T0 = 273;
+        public const double T0 = 273;
         #endregion
         #region Рекуператор
         /// <summary>
@@ -241,22 +241,60 @@ namespace GasChannelLib
         /// </summary>
         public double h_tr_bor => (lambda_vert * L_bor_vert_rek * Ro_0 * Math.Pow(W_vert0, 2) * T_sr_fume_bor) / (2 * d_pr_bor * T0);
 
-
+        /// <summary>
+        /// Потери энергии при двух поворотах на 90° на пути от вертикальных каналов до рекуператора
+        /// </summary>
+        public double h_pov_90_vert_to_rek => (2.5d * Ro_0 * Math.Pow(W_vert0, 2) * T_sr_fume_bor) / (2 * T0);
 
         /// <summary>
         /// Суммарные потери энергии на учатске от вертикальных каналов до рекуператора
         /// </summary>
-        public double H_pot_vert_to_rek => 0;
+        public double H_pot_vert_to_rek => h_tr_bor + h_pov_90_vert_to_rek;
+
+        /// <summary>
+        /// Потери энергии при внезапном расширении при входе в рекуператор, Н/м2
+        /// </summary>
+        public double h_mc_vh_rek =>(0.16 * Ro_0 * Math.Pow(W_vert0, 2) * T_rek_vh) / (2 * T0);
+
+        /// <summary>
+        /// Действительная скорость движения дыма, м/с
+        /// </summary>
+        public double Wd => W0_rek * T_rek_sr / T0;
+
+        /// <summary>
+        /// Потери при поперечном омывании дымом шахматного пучка труб, Н/м2
+        /// </summary>
+        public double h_rek_puchok => (n_trub + 1) * d_h_diag * fi_s1 * fi_s2 * fi_d * fi_t_st;
+
+        /// <summary>
+        /// Скорость движения дыма в камере рекуператора за трубами, м/с
+        /// </summary>
+        public double W0_fume => Kol_prod_gorenija / (L_rek * W_rek * 3600);
+
+        /// <summary>
+        /// Потери энергии при внезапном расширении при выходе из рекуператора, Н/м2
+        /// </summary>
+        public double h_mc_rek => (0.26 * Math.Pow(W0_fume, 2) * Ro_0 * T_rek_vyh) / (2 * T0);
+
+        /// <summary>
+        /// Суммарные потери на местных сопротивлениях
+        /// </summary>
+        public double h_sum => h_mc_rek + h_mc_vh_rek;
 
         /// <summary>
         /// Потери энергии в рекуператоре
         /// </summary>
-        public double H_rek => 0;
+        public double H_rek => h_mc_vh_rek + h_rek_puchok + h_mc_rek;
+
+        /// <summary>
+        /// Средняя температура дыма на этом участке
+        /// </summary>
+        public double Td_rek_shib => (T_rek_vyh + (T_rek_vyh - (1.5 * L_bor))) / 2;
 
         /// <summary>
         /// Потери на трение
         /// </summary>
-        public double H_tr => 0;
+        public double H_tr => (lambda_vert * L_bor * Ro_0 * Math.Pow(L_rek, 2) * Td_rek_shib) / (d_pr_bor * 2 * T0);
 
         /// <summary>
         /// Общие потери энергии при движении продуктов горения от рабочего пространства до шибера

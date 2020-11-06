@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Расчётные величины</h2>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Наименование показателя, ед. изм.</th>
+                        <th>Величина</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Двойной диаметр труб, мм</td>
+                        <td>@Math.Round(ViewBag.s1, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Температура дыма на выходе из рекуператора, Тр1, К</td>
+                        <td>@Math.Round(ViewBag.T_rek_vyh, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Средняя температура в рекуператоре, К</td>
+                        <td>@Math.Round(ViewBag.T_rek_sr, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Скорость движения дымовых газов в конце печи с учетом сечения рабочего пространства печи за счет нагревающихся заготовок</td>
+                        <td>@Math.Round(ViewBag.W0, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Скорость движения в 3 вертикальных каналах, м/с</td>
+                        <td>@Math.Round(ViewBag.W_vert0, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Сечение каналов, м2</td>
+                        <td>@Math.Round(ViewBag.F_kan, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Сечение каждого канала, м2</td>
+                        <td>@Math.Round(ViewBag.F_kazhd_kan, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Приведённый диаметр вертикальных каналов, м</td>
+                        <td>@Math.Round(ViewBag.d_vert_pr, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потеря энергии на трение в вертикальных каналах Н/м2</td>
+                        <td>@Math.Round(ViewBag.h_vert_tr, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потери энергии при повороте на 90 градусов (вертикальные каналы), Н/м2</td>
+                        <td>@Math.Round(ViewBag.h_vert_pov90, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потери энергии при сужении канала в вертикальных каналах, Н/м2</td>
+                        <td>@Math.Round(ViewBag.h_vert_suzh, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потери на местных сопротивлениях (вертикаьные каналы), Н/м2</td>
+                        <td>@Math.Round(ViewBag.h_vert_local, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потери энергии на преодолении геометрического напора (верт), Н/м2</td>
+                        <td>@Math.Round(ViewBag.h_vert_geom, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Суммарные потери в вертикальном канале</td>
+                        <td>@Math.Round(ViewBag.H_pot_vert, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Сечение борова, м</td>
+                        <td>@Math.Round(ViewBag.F_bor, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Приведенный диаметр борова</td>
+                        <td>@Math.Round(ViewBag.d_pr_bor, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Средняя температура дыма на борове</td>
+                        <td>@Math.Round(ViewBag.T_sr_fume_bor, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потеря энергии на трение от вертикальных каналов до рекуператора</td>
+                        <td>@Math.Round(ViewBag.h_tr_bor, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потери энергии при двух поворотах на 90° на пути от вертикальных каналов до рекуператора</td>
+                        <td>@Math.Round(ViewBag.h_pov_90_vert_to_rek, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Суммарные потери энергии на учатске от вертикальных каналов до рекуператора</td>
+                        <td>@Math.Round(ViewBag.H_pot_vert_to_rek, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потери энергии при внезапном расширении при входе в рекуператор, Н/м2</td>
+                        <td>@Math.Round(ViewBag.h_mc_vh_rek, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Действительная скорость движения дыма, м/с</td>
+                        <td>@Math.Round(ViewBag.Wd, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потери при поперечном омывании дымом шахматного пучка труб, Н/м2</td>
+                        <td>@Math.Round(ViewBag.h_rek_puchok, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Скорость движения дыма в камере рекуператора за трубами, м/с</td>
+                        <td>@Math.Round(ViewBag.W0_fume, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потери энергии при внезапном расширении при выходе из рекуператора, Н/м2</td>
+                        <td>@Math.Round(ViewBag.h_mc_rek, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Суммарные потери на местных сопротивлениях</td>
+                        <td>@Math.Round(ViewBag.h_sum, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потери энергии в рекуператоре</td>
+                        <td>@Math.Round(ViewBag.H_rek, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Средняя температура дыма на этом участке</td>
+                        <td>@Math.Round(ViewBag.Td_rek_shib, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Потери на трение</td>
+                        <td>@Math.Round(ViewBag.H_tr, 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Общие потери энергии при движении продуктов горения от рабочего пространства до шибера</td>
+                        <td>@Math.Round(ViewBag.H_sum_pot, 2)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div style="width:600px; padding-top:10px; padding-left:30px;">
+        <canvas id="Chart" style="display:block;"></canvas>
+        <script src="~/Scripts/Chart.js"></script>
+        <script>
+            var ctx = document.getElementById('Chart').getContext('2d');
+            var chart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ["Общие потери энергии при движении продуктов горения от рабочего пространства до шибера"],
+                        datasets: [{
+                            label: "Суммарные потери в вертикальном канале",
+                            backgroundColor: [
+                                'rgb(255, 128, 128)'],
+                            data: [
+                                parseFloat(@Math.Round(ViewBag.H_pot_vert, 2))],
+                        },
+                        {
+                            label: "Суммарные потери энергии на учатске от вертикальных каналов до рекуператора",
+                            backgroundColor: [
+                                'rgb(0, 0, 255)'],
+                            data: [
+                                parseFloat(@Math.Round(ViewBag.H_pot_vert_to_rek, 2))],
+                            },
+                        {
+                            label: "Потери энергии в рекуператоре",
+                            backgroundColor: [
+                                'rgb(255, 0, 0)'],
+                            data: [
+                                parseFloat(@Math.Round(ViewBag.H_rek, 2))],
+                            },
+                        {
+                            label: "Потери на трение",
+                            backgroundColor: [
+                                'rgb(0, 255, 0)'],
+                            data: [
+                                parseFloat(@Math.Round(ViewBag.H_tr, 2))],
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        legend: {
+                            display: true,
+                            position: "left"
+                        }
+                    }
+                });
+        </script>
+        </script>
+    </div>
+</body>
+</html>

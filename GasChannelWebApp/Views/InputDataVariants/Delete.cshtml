@@ -1,0 +1,233 @@
+﻿@model GasChannelWebApp.Domain.InputDataVariants
+
+@{ 
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+<h3>Вы действительно хотите удалить данный вариант?</h3>
+<div>
+    <h4>Вариант:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Variants.NameVariant)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Variants.NameVariant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kol_prod_gorenija)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kol_prod_gorenija)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ro_0)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ro_0)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ro_v)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ro_v)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.H_pechi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.H_pechi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.L_pechi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.L_pechi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.T_fume)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.T_fume)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.T_fume_v)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.T_fume_v)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.L_vert)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.L_vert)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.b_vert)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.b_vert)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.H_vert)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.H_vert)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lambda_vert)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.lambda_vert)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.L_bor_vert_rek)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.L_bor_vert_rek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Td_rek_fume_bor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Td_rek_fume_bor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tv_bor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tv_bor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.H_bor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.H_bor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.L_bor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.L_bor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.T_rek)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.T_rek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.L_rek)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.L_rek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.W_rek)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.W_rek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.d_trub_rek)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.d_trub_rek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.T_rek_vh)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.T_rek_vh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.W0_rek)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.W0_rek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.n_trub)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.n_trub)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.T_trub)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.T_trub)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.d_h_diag)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.d_h_diag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fi_s1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fi_s1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fi_s2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fi_s2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fi_d)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fi_d)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fi_t_st)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.fi_t_st)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" />
+            @Html.ActionLink("Вернуться к списку", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,46 @@
+﻿@model GasChannelWebApp.Models.AccountModels.LoginModel
+@{
+    ViewBag.Title = "Вход в систему";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<section id="loginForm">
+    <h2>Используйте свои данные для входа</h2>
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Форма входа</legend>
+
+            <ol>
+                <li>
+                    @Html.LabelFor(l => l.UserName)
+                    @Html.TextBoxFor(l => l.UserName)
+                    @Html.ValidationMessageFor(l => l.UserName)
+                </li>
+
+                <li>
+                    @Html.LabelFor(l => l.Password)
+                    @Html.PasswordFor(l => l.Password)
+                    @Html.ValidationMessageFor(l => l.Password)
+                </li>
+
+                <li>
+                    @Html.LabelFor(l => l.RememberUser, new { @class = "checkbox" })
+                    @Html.CheckBoxFor(l => l.RememberUser)
+                </li>
+            </ol>
+            <input type="submit" value="Войти" />
+        </fieldset>
+        <p>
+            @Html.ActionLink("Зарегистрируйтесь", "Register") если у вас нет учётной записи
+        </p>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

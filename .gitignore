@@ -5,3 +5,5 @@
 **/obj
 **/lib
 GasChannelWebApp/.vs/GasChannelWebApp/v16/.suo
+*.exe
+.vs/GasChannelWebApp/v16/.suo

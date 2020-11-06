@@ -1,0 +1,229 @@
+﻿@model IEnumerable<GasChannelWebApp.Domain.InputDataVariants>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "InputDataVariants", FormMethod.Post))
+{
+    <button type="submit" name="action" value="ClearTable">Очистить таблицу</button>
+    <button type="submit" name="action" value="LoadTable">Заполнить таблицу</button>
+    <p>
+    </p>
+}
+
+@using (Html.BeginForm("Index", "InputDataVariants", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+    <form method="post">
+        <div class=" form-inline">
+            <label class=" control-label">Вариант: </label>
+            @Html.DropDownList("ID_Variant", null, "Все", htmlAttributes: new { @class = "form-control" })
+            <button type="submit" name="action" value="Filter">Фильтр</button>
+        </div>
+    </form>
+
+}
+<p>
+    @Html.ActionLink("Создать", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Variants.NameVariant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kol_prod_gorenija)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ro_0)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ro_v)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.H_pechi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.L_pechi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.T_fume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.T_fume_v)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.L_vert)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.b_vert)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.H_vert)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lambda_vert)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.L_bor_vert_rek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Td_rek_fume_bor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tv_bor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.H_bor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.L_bor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.T_rek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.L_rek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.W_rek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.d_trub_rek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.T_rek_vh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.W0_rek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.n_trub)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.T_trub)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.d_h_diag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fi_s1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fi_s2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fi_d)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fi_t_st)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Variants.NameVariant)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Kol_prod_gorenija)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ro_0)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ro_v)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.H_pechi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.L_pechi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.T_fume)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.T_fume_v)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.L_vert)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.b_vert)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.H_vert)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.lambda_vert)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.L_bor_vert_rek)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Td_rek_fume_bor)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tv_bor)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.H_bor)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.L_bor)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.T_rek)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.L_rek)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.W_rek)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.d_trub_rek)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.T_rek_vh)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.W0_rek)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.n_trub)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.T_trub)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.d_h_diag)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fi_s1)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fi_s2)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fi_d)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fi_t_st)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID_InputDataVariant }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID_InputDataVariant }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID_InputDataVariant })
+    </td>
+</tr>
+    }
+
+</table>
