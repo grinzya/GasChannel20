@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -153,35 +153,21 @@
             var chart = new Chart(ctx, {
                     type: 'pie',
                     data: {
-                        labels: ["Общие потери энергии при движении продуктов горения от рабочего пространства до шибера"],
+                        labels: ["Суммарные потери в вертикальном канале", "Суммарные потери энергии на учатске от вертикальных каналов до рекуператора", "Потери энергии в рекуператоре", "Потери на трение"],
                         datasets: [{
-                            label: "Суммарные потери в вертикальном канале",
+                            label: "Общие потери энергии при движении продуктов горения от рабочего пространства до шибера",
                             backgroundColor: [
-                                'rgb(255, 128, 128)'],
-                            data: [
-                                parseFloat(@Math.Round(ViewBag.H_pot_vert, 2))],
-                        },
-                        {
-                            label: "Суммарные потери энергии на учатске от вертикальных каналов до рекуператора",
-                            backgroundColor: [
-                                'rgb(0, 0, 255)'],
-                            data: [
-                                parseFloat(@Math.Round(ViewBag.H_pot_vert_to_rek, 2))],
-                            },
-                        {
-                            label: "Потери энергии в рекуператоре",
-                            backgroundColor: [
-                                'rgb(255, 0, 0)'],
-                            data: [
-                                parseFloat(@Math.Round(ViewBag.H_rek, 2))],
-                            },
-                        {
-                            label: "Потери на трение",
-                            backgroundColor: [
+                                'rgb(255, 128, 128)',
+                                'rgb(0, 0, 255)',
+                                'rgb(255, 0, 0)',
                                 'rgb(0, 255, 0)'],
                             data: [
+                                parseFloat(@Math.Round(ViewBag.H_pot_vert, 2)),
+                                parseFloat(@Math.Round(ViewBag.H_pot_vert_to_rek, 2)),
+                                parseFloat(@Math.Round(ViewBag.H_rek, 2)),
                                 parseFloat(@Math.Round(ViewBag.H_tr, 2))],
-                        }]
+                        },
+
                     },
                     options: {
                         responsive: true,
@@ -192,7 +178,10 @@
                     }
                 });
         </script>
-        </script>
+
     </div>
+    <br />
+    <br />
+
 </body>
 </html>

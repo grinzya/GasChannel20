@@ -40,47 +40,129 @@ namespace GasChannelWebApp.Controllers
         [Authorize]
         public ActionResult Demo()
         {
+            GasChannelDB gcdb = new GasChannelDB();
+            if (gcdb.Variants.Where(p => p.Owner.ID_User == _users.CurrentUser.ID_User).FirstOrDefault() == null)
+            {
+                double _Kol_prod_gorenija = 19165;
+                double _Ro_0 = 1.28;
+                double _Ro_v = 1.29;
+                double _H_pechi = 3.55;
+                double _L_pechi = 2.15;
+                double _T_fume = 1223;
+                double _T_fume_v = 1198;
+                double _L_vert = 1;
+                double _b_vert = 0.7;
+                double _H_vert = 3;
+                double _lambda_vert = 0.05;
+                double _L_bor_vert_rek = 11;
+                double _Td_rek_fume_bor = 1176;
+                double _Tv_bor = 293;
+                double _T_rek = 450;
+                double _L_rek = 1.4;
+                double _W_rek = 2.5;
+                double _d_trub_rek = 57;
+                double _T_rek_vh = 1176;
+                double _W0_rek = 4;
+                int _n_trub = 14;
+                double _T_trub = 593;
+                double _d_h_diag = 8;
+                double _fi_s1 = 0.95;
+                double _fi_s2 = 1;
+                double _fi_d = 1.11;
+                double _fi_t_st = 1.06;
+                string _NameDefaultVariant = "Шаблон";
+
+                Variants var_default = new Variants
+                {
+                    NameVariant = _NameDefaultVariant,
+                    DateVariant = System.DateTime.Now,
+                    Owner = _users.CurrentUser
+                };
+                _variants.InsertOrUpdate(var_default);
+                _variants.Save();
+
+                int _ID_Variant_new = gcdb.Variants.Where(p => p.NameVariant == _NameDefaultVariant && p.Owner.ID_User == _users.CurrentUser.ID_User).First().ID_Variant;
+                InputDataVariants inputDataVariants_new = new InputDataVariants
+                {
+                    ID_Variant = _ID_Variant_new,
+                    Kol_prod_gorenija = _Kol_prod_gorenija,
+                    Ro_0 = _Ro_0,
+                    Ro_v = _Ro_v,
+                    H_pechi = _H_pechi,
+                    L_pechi = _L_pechi,
+                    T_fume = _T_fume,
+                    T_fume_v = _T_fume_v,
+                    L_vert = _L_vert,
+                    b_vert = _b_vert,
+                    H_vert = _H_vert,
+                    lambda_vert = _lambda_vert,
+                    L_bor_vert_rek = _L_bor_vert_rek,
+                    Td_rek_fume_bor = _Td_rek_fume_bor,
+                    Tv_bor = _Tv_bor,
+                    T_rek = _T_rek,
+                    L_rek = _L_rek,
+                    W_rek = _W_rek,
+                    d_trub_rek = _d_trub_rek,
+                    T_rek_vh = _T_rek_vh,
+                    W0_rek = _W0_rek,
+                    n_trub = _n_trub,
+                    T_trub = _T_trub,
+                    d_h_diag = _d_h_diag,
+                    fi_s1 = _fi_s1,
+                    fi_s2 = _fi_s2,
+                    fi_d =_fi_d,
+                    fi_t_st = _fi_t_st,
+                    Owner = _users.CurrentUser
+                };
+                _inputDataVariants.InsertOrUpdate(inputDataVariants_new);
+                _inputDataVariants.Save();
+            }
+
+            int _ID_Variant_First = gcdb.Variants.First(p => p.Owner.ID_User == _users.CurrentUser.ID_User).ID_Variant;
+
             GasChannelLib.GasChannelLib gcl = new GasChannelLib.GasChannelLib();
 
-            #region --- Задать исходные данные по умолчанию
+            #region --- Задать исходные данные для первого найденного варианта
 
-            gcl.Kol_prod_gorenija = 19165;
-            gcl.Ro_0 = 1.28;
-            gcl.Ro_v = 1.29;
-            gcl.H_pechi = 3.55;
-            gcl.L_pechi = 2.15;
-            gcl.T_fume = 1223;
-            gcl.T_fume_v = 1198;
-            gcl.L_vert = 1;
-            gcl.b_vert = 0.7;
-            gcl.H_vert = 3;
-            gcl.lambda_vert = 0.05;
-            gcl.L_bor_vert_rek = 11;
-            gcl.Td_rek_fume_bor = 1176;
-            gcl.Tv_bor = 293;
-            gcl.T_rek = 450;
-            gcl.L_rek = 1.4;
-            gcl.W_rek = 2.5;
-            gcl.d_trub_rek = 57;
-            gcl.T_rek_vh = 1176;
-            gcl.W0_rek = 4;
-            gcl.n_trub = 14;
-            gcl.T_trub = 593;
-            gcl.d_h_diag = 8;
-            gcl.fi_s1 = 0.95;
-            gcl.fi_s2 = 1;
-            gcl.fi_d = 1.11;
-            gcl.fi_t_st = 1.06;
+            gcl.Kol_prod_gorenija = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).Kol_prod_gorenija;
+            gcl.Ro_0 = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).Ro_0;
+            gcl.Ro_v = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).Ro_v;
+            gcl.H_pechi = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).H_pechi;
+            gcl.L_pechi = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).L_pechi;
+            gcl.T_fume = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).T_fume;
+            gcl.T_fume_v = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).T_fume_v;
+            gcl.L_vert = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).L_vert;
+            gcl.b_vert = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).b_vert;
+            gcl.H_vert = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).H_vert;
+            gcl.lambda_vert = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).lambda_vert;
+            gcl.L_bor_vert_rek = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).L_bor_vert_rek;
+            gcl.Td_rek_fume_bor = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).Td_rek_fume_bor;
+            gcl.Tv_bor = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).Tv_bor;
+            gcl.T_rek = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).T_rek;
+            gcl.L_rek = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).L_rek;
+            gcl.W_rek = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).W_rek;
+            gcl.d_trub_rek = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).d_trub_rek;
+            gcl.T_rek_vh = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).T_rek_vh;
+            gcl.W0_rek = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).W0_rek;
+            gcl.n_trub = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).n_trub;
+            gcl.T_trub = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).T_trub;
+            gcl.d_h_diag = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).d_h_diag;
+            gcl.fi_s1 = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).fi_s1;
+            gcl.fi_s2 = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).fi_s2;
+            gcl.fi_d = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).fi_d;
+            gcl.fi_t_st = _inputDataVariants.All.First(p => p.Variants.ID_Variant == _ID_Variant_First && p.Owner.ID_User == _users.CurrentUser.ID_User).fi_t_st;
+
+            #endregion --- Задать исходные данные для первого найденного варианта
 
             ViewBag.InputData = gcl;
             ViewBag.ID_Variant = new SelectList(_variants.All.Where(t => t.Owner.ID_User == _users.CurrentUser.ID_User), "ID_Variant", "NameVariant");
+            ViewBag.NameNewVariant = "Новый вариант";
 
-
-            #endregion --- Задать исходные данные по умолчанию
             return View();
         }
 
         [HttpPost]
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "toApply")]
         public ActionResult Demo(string ID_Variant)
         {
             int _ID_Variant = int.Parse(ID_Variant);
@@ -124,12 +206,103 @@ namespace GasChannelWebApp.Controllers
 
             ViewBag.InputData = gcl;
             ViewBag.ID_Variant = new SelectList(_variants.All.Where(t => t.Owner.ID_User == _users.CurrentUser.ID_User), "ID_Variant", "NameVariant");
+            ViewBag.NameNewVariant = "Новый вариант";
+
             return View();
         }
 
         [HttpPost]
-        [Authorize] // Запрещены анонимные обращения к данной странице
-        public ActionResult ResultDemo(InputDataModel InputData)
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "toSaveAs")]
+        public ActionResult Demo(InputDataModel InputData, string NameNewVariant)
+        {
+            GasChannelDB gcdb = new GasChannelDB();
+            double _Kol_prod_gorenija = double.Parse(InputData.Kol_prod_gorenija.ToString());
+            double _Ro_0 = double.Parse(InputData.Ro_0.ToString());
+            double _Ro_v = double.Parse(InputData.Ro_v.ToString());
+            double _H_pechi = double.Parse(InputData.H_pechi.ToString());
+            double _L_pechi = double.Parse(InputData.L_pechi.ToString());
+            double _T_fume = double.Parse(InputData.T_fume.ToString());
+
+            double _T_fume_v = double.Parse(InputData.T_fume_v.ToString());
+            double _L_vert = double.Parse(InputData.L_vert.ToString());
+            double _b_vert = double.Parse(InputData.b_vert.ToString());
+            double _H_vert = double.Parse(InputData.H_vert.ToString());
+            double _lambda_vert = double.Parse(InputData.lambda_vert.ToString());
+
+            double _L_bor_vert_rek = double.Parse(InputData.L_bor_vert_rek.ToString());
+            double _Td_rek_fume_bor = double.Parse(InputData.Td_rek_fume_bor.ToString());
+            double _Tv_bor = double.Parse(InputData.Tv_bor.ToString());
+            double _H_bor = double.Parse(InputData.H_bor.ToString());
+            double _L_bor = double.Parse(InputData.L_bor.ToString());
+
+            double _T_rek = double.Parse(InputData.T_rek.ToString());
+            double _L_rek = double.Parse(InputData.L_rek.ToString());
+            double _W_rek = double.Parse(InputData.W_rek.ToString());
+            double _d_trub_rek = double.Parse(InputData.d_trub_rek.ToString());
+            double _T_rek_vh = double.Parse(InputData.T_rek_vh.ToString());
+            double _W0_rek = double.Parse(InputData.W0_rek.ToString());
+            int _n_trub = int.Parse(InputData.n_trub.ToString());
+            double _T_trub = double.Parse(InputData.T_trub.ToString());
+            double _d_h_diag = double.Parse(InputData.d_h_diag.ToString());
+            double _fi_s1 = double.Parse(InputData.fi_s1.ToString());
+            double _fi_s2 = double.Parse(InputData.fi_s2.ToString());
+            double _fi_d = double.Parse(InputData.fi_d.ToString());
+            double _fi_t_st = double.Parse(InputData.fi_t_st.ToString());
+
+            string _NameNewVariant = NameNewVariant.ToString();
+
+            Variants var_new = new Variants
+            {
+                NameVariant = _NameNewVariant,
+                DateVariant = System.DateTime.Now,
+                Owner = _users.CurrentUser
+            };
+            _variants.InsertOrUpdate(var_new);
+            _variants.Save();
+
+            int _ID_Variant_new = gcdb.Variants.Where(p => p.NameVariant == _NameNewVariant && p.Owner.ID_User == _users.CurrentUser.ID_User).First().ID_Variant;
+            InputDataVariants inputDataVariants_new = new InputDataVariants
+            {
+                ID_Variant = _ID_Variant_new,
+                Kol_prod_gorenija = _Kol_prod_gorenija,
+                Ro_0 = _Ro_0,
+                Ro_v = _Ro_0,
+                H_pechi = _H_pechi,
+                L_pechi = _L_pechi,
+                T_fume = _T_fume,
+                T_fume_v = _T_fume_v,
+                L_vert = _L_vert,
+                b_vert = _b_vert,
+                H_vert = _H_vert,
+                L_bor_vert_rek = _L_bor_vert_rek,
+                Td_rek_fume_bor = _Td_rek_fume_bor,
+                Tv_bor = _Tv_bor,
+                H_bor = _H_bor,
+                L_bor = _L_bor,
+                T_rek = _T_rek,
+                L_rek = _L_rek,
+                W_rek = _W_rek,
+                d_trub_rek = _d_trub_rek,
+                T_rek_vh = _T_rek_vh,
+                W0_rek = _W0_rek,
+                n_trub = _n_trub,
+                T_trub = _T_trub,
+                d_h_diag = _d_h_diag,
+                fi_s1 = _fi_s1,
+                fi_s2 = _fi_s2,
+                fi_d = _fi_d,
+                fi_t_st = _fi_t_st,
+                Owner = _users.CurrentUser
+            };
+            _inputDataVariants.InsertOrUpdate(inputDataVariants_new);
+            _inputDataVariants.Save();
+
+            return RedirectToAction("Demo", "Home");
+        }
+
+        [HttpPost]
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "toSolver")]
+        public ActionResult Demo(InputDataModel InputData)
         {
             DemoModel _result = new DemoModel(InputData);
 
@@ -171,7 +344,7 @@ namespace GasChannelWebApp.Controllers
         }
 
         [Authorize] // Запрещены анонимные обращения к данной странице
-        public ActionResult Excel()
+        public ActionResult Excel() //Заменить на OpenXML
         {
             ViewBag.Result = "Файл успешно сохранен!";
 

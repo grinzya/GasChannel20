@@ -9,7 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Demo", "Home", FormMethod.Post))
     {
         <div class="form-group">
             @Html.LabelFor(model => model.ID_Variant, "Выберите вариант исходных данных", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -19,12 +19,12 @@
             </div>
         </div>
         <div class="form-group" style="margin-left: auto; margin-top: 20px">
-            <button type="submit" style="font-size: 16px" class="btn btn-primary">Применить</button>
+            <button type="submit" name="action" value="toApply" style="font-size: 16px" class="btn btn-primary">Применить</button>
         </div>
-    }
 
-    @using (Html.BeginForm("ResultDemo", "Home", FormMethod.Post))
-    {
+        <p>
+        </p>
+
         <div class="container">
             <h2>Исходные данные</h2>
             <div class="table-responsive">
@@ -157,8 +157,17 @@
                 </table>
             </div>
         </div>
+
         <div class="form-group" style="margin-left: auto; margin-top: 20px">
-            <button type="submit" style="font-size: 16px" class="btn btn-primary">Рассчитать</button>
+            @Html.TextBox("NameNewVariant", (string)(ViewBag.NameNewVariant))
+            <button type="submit" name="action" value="toSaveAs" style="font-size: 16px" class="btn btn-primary">Сохранить новый вариант</button>
+        </div>
+
+        <p>
+        </p>
+
+        <div class="form-group" style="margin-left: auto; margin-top: 20px">
+            <button type="submit" name="action" value="toSolver" style="font-size: 16px" class="btn btn-primary">Рассчитать</button>
         </div>
     }
 </body>

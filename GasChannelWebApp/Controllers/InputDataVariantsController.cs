@@ -3,6 +3,7 @@ using GasChannelWebApp.Domain;
 using GasChannelWebApp.Infrastructure;
 using GasChannelWebApp.Models;
 using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -173,6 +174,15 @@ namespace GasChannelWebApp.Controllers
             _inputDataVariants.Remove(_inputDataVariants.All.FirstOrDefault(t => t.ID_InputDataVariant == id));
             _inputDataVariants.Save();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return View(_inputDataVariants.All.FirstOrDefault(t => t.ID_InputDataVariant == id));
         }
 
     }

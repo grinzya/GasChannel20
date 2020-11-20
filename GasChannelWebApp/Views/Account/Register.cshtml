@@ -1,31 +1,38 @@
 ﻿@model GasChannelWebApp.Models.AccountModels.RegisterModel
-    @{ 
-        ViewBag.Title = "Регистрация";
-    }
+@{
+    ViewBag.Title = "Регистрация";
+}
 
-<h1>@ViewBag.Title</h1>
-<h2></h2>
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Создание нового пользователя.</h2>
+</hgroup>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary();
-<fieldset>
-    <legend>Регистрация</legend>
-    <ol>
-        <li>
-            @Html.LabelFor(l => l.UserName)
-            @Html.TextBoxFor(l => l.UserName)
-        </li>
-        <li>
-            @Html.LabelFor(l => l.Password)
-            @Html.TextBoxFor(l => l.Password)
-        </li>
-        <li>
-            @Html.LabelFor(l => l.ConfirmPassword)
-            @Html.TextBoxFor(l => l.ConfirmPassword)
-        </li>
-    </ol>
-    <input type="submit" value="Зарегистрировать" />
-</fieldset>
+    <fieldset>
+        <legend>Регистрация</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(l => l.UserName)
+                @Html.TextBoxFor(l => l.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(l => l.Password)
+                @Html.TextBoxFor(l => l.Password)
+            </li>
+            <li>
+                @Html.LabelFor(l => l.ConfirmPassword)
+                @Html.TextBoxFor(l => l.ConfirmPassword)
+            </li>
+        </ol>
+        <input type="submit" value="Зарегистрировать" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

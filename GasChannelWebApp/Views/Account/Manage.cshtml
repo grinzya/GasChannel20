@@ -2,28 +2,31 @@
 @{
     ViewBag.Title = "Управление учётной записью";
 }
-<h1>@ViewBag.Title</h1>
 
-<p>class="message-success">@ViewBag.StatusMessage</p>
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
 
-<p>Вы вошли как: <strong>@User.Identity.Name</strong>.</p>
+    <p>class="message-success">@ViewBag.StatusMessage</p>
 
-@if (ViewBag.HasLocalPassword)
-{
-    @Html.Partial("_ChangePasswordPartial")
-}
-else
-{
-    @Html.Partial("_SetPasswordPartial")
-}
+    <p>Вы вошли как: <strong>@User.Identity.Name</strong>.</p>
 
-<section id="externalLogins">
-    @Html.Action("RemoveExternalLogins")
+    @if (ViewBag.HasLocalPassword)
+    {
+        @Html.Partial("_ChangePasswordPartial")
+    }
+    else
+    {
+        @Html.Partial("_SetPasswordPartial")
+    }
 
-    <h3>Add an external login</h3>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
+    <section id="externalLogins">
+        @Html.Action("RemoveExternalLogins")
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        <h3>Add an external login</h3>
+        @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+    </section>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
